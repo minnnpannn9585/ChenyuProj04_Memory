@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SellScene.unity
     guid: 119b5d77ddf194428957f2a0c45edff3
   - enabled: 1
-    path: Assets/Scenes/SeaScene.unity
+    path: Assets/Scenes/SeaScene01.unity
     guid: 51f31f072d059410c98ce63e672e621b
   m_configObjects: {}

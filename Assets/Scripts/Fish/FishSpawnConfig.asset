@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528bfe72c68ee4d22aa6792f45184c8c, type: 3}
+  m_Name: FishSpawnConfig
+  m_EditorClassIdentifier: 
+  availableFishTypes:
+  - {fileID: 11400000, guid: 644f29dac6c4145b6932b4d3832fd0c8, type: 2}
+  minSpawnInterval: 2
+  maxSpawnInterval: 3
+  spawnIntervalDecrement: 0.1
+  minPossibleInterval: 0.5
+  leftSpawnChance: 0.5
+  yMin: -3
+  yMax: 3
+  spawnPadding: 1
