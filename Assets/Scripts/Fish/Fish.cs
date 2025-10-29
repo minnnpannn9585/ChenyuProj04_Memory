@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Fish : MonoBehaviour
 {
+    public FishTypes type;
     private FishType fishType;
     private bool movingRight;
     public SpriteRenderer spriteRenderer;

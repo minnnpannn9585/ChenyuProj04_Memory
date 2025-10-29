@@ -67,8 +67,9 @@ public class CharacterMove : MonoBehaviour
     {
         if (other.TryGetComponent<Fish>(out Fish fish))
         {
+            GameManager.Instance.AddFishToBackpack(fish.type);
             // 通知背包捕获鱼
-            Inventory.Instance.AddFish(fish.GetFishType());
+            //Inventory.Instance.AddFish(fish.GetFishType());
             // 销毁鱼
             Destroy(fish.gameObject);
         }

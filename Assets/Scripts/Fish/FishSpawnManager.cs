@@ -1,31 +1,36 @@
 using UnityEngine;
+using static GameManager;
 
 public class FishSpawnManager : MonoBehaviour
 {
     [SerializeField] private FishSpawnConfig spawnConfig;
     [SerializeField] private GameObject fishPrefab;
     
-    private float nextSpawnTime;
+    //private float nextSpawnTime;
     private float currentMinInterval;
     private float currentMaxInterval;
+
+    float intervalTimer;
 
     private void Start()
     {
         // 初始化间隔时间
         currentMinInterval = spawnConfig.minSpawnInterval;
         currentMaxInterval = spawnConfig.maxSpawnInterval;
-        
-        // 设置第一次生成时间
-        SetNextSpawnTime();
+        intervalTimer = 2f;
     }
 
     private void Update()
     {
-        if (Time.time >= nextSpawnTime)
+        if(GameManager.Instance.currentState == GameState.Fishing)
+        {
+            intervalTimer -= Time.deltaTime;
+        }
+        if (intervalTimer <= 0)
         {
             SpawnFish();
             SetNextSpawnTime();
-            UpdateSpawnIntervals();
+            //UpdateSpawnIntervals();
         }
     }
 
@@ -70,16 +75,16 @@ public class FishSpawnManager : MonoBehaviour
 
     private void SetNextSpawnTime()
     {
-        nextSpawnTime = Time.time + Random.Range(currentMinInterval, currentMaxInterval);
+        intervalTimer = Random.Range(currentMinInterval, currentMaxInterval);
     }
 
-    private void UpdateSpawnIntervals()
-    {
-        // 逐渐减小生成间隔，增加游戏难度
-        currentMinInterval = Mathf.Max(spawnConfig.minPossibleInterval, 
-            currentMinInterval - spawnConfig.spawnIntervalDecrement * Time.deltaTime);
+    //private void UpdateSpawnIntervals()
+    //{
+    //    // 逐渐减小生成间隔，增加游戏难度
+    //    currentMinInterval = Mathf.Max(spawnConfig.minPossibleInterval, 
+    //        currentMinInterval - spawnConfig.spawnIntervalDecrement * Time.deltaTime);
             
-        currentMaxInterval = Mathf.Max(spawnConfig.minPossibleInterval + 0.1f, 
-            currentMaxInterval - spawnConfig.spawnIntervalDecrement * Time.deltaTime);
-    }
+    //    currentMaxInterval = Mathf.Max(spawnConfig.minPossibleInterval + 0.1f, 
+    //        currentMaxInterval - spawnConfig.spawnIntervalDecrement * Time.deltaTime);
+    //}
 }
