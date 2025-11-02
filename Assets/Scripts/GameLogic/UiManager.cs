@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour
             GameObject item = Instantiate(orderItemPrefab, orderContent);
             TextMeshProUGUI text = item.GetComponent<TextMeshProUGUI>();
             // 明确显示需求（玩家需要记住）
-            text.text = $"{order.customerName}：{order.requiredCount} * {GetFishName(order.requiredFish)}";
+            text.text = $"{order.customerName}: \n{order.requiredCount} * {GetFishName(order.requiredFish)}";
         }
 
         Invoke(nameof(StartFishing), 7f); // 延长至7秒，给玩家记忆时间
