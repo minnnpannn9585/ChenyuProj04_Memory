@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FishType_Clownfish
   m_EditorClassIdentifier: 
   fishName: Clownfish
-  fishSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  fishSprite: {fileID: 21300000, guid: ca4f2b4d697a34104acf42128db84b26, type: 3}
   moveSpeed: 3
   index: 3
-  scale: {x: 0.5, y: 0.5}
+  scale: {x: 1, y: 1}

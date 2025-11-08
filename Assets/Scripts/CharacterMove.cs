@@ -12,6 +12,8 @@ public class CharacterMove : MonoBehaviour
     private Vector2 screenBounds; // 屏幕边界
     private float playerHalfWidth;
     private float playerHalfHeight;
+
+    private SpriteRenderer sr;
     
     void Awake()
     {
@@ -19,6 +21,7 @@ public class CharacterMove : MonoBehaviour
         Collider2D col = GetComponent<Collider2D>();
         playerHalfWidth = col.bounds.extents.x;
         playerHalfHeight = col.bounds.extents.y;
+        sr = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -34,6 +37,15 @@ public class CharacterMove : MonoBehaviour
     {
         // 获取移动输入
         float horizontal = Input.GetAxis("Horizontal");
+
+        if (horizontal < 0)
+        {
+            sr.flipX = false;
+        }
+        else if (horizontal > 0)
+        {
+            sr.flipX = true;
+        }
         float vertical = Input.GetAxis("Vertical");
         Vector2 movement = new Vector2(horizontal, vertical).normalized * speed * Time.fixedDeltaTime;
 
