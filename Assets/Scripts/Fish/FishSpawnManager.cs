@@ -39,6 +39,8 @@ public class FishSpawnManager : MonoBehaviour
         // 随机选择鱼的种类
         int randomIndex = Random.Range(0, spawnConfig.availableFishTypes.Count);
         FishType selectedFish = spawnConfig.availableFishTypes[randomIndex];
+        //print(randomIndex);
+        //print(spawnConfig.availableFishTypes.Count);
         
         // 决定生成方向
         bool spawnLeft = Random.value < spawnConfig.leftSpawnChance;
@@ -50,6 +52,7 @@ public class FishSpawnManager : MonoBehaviour
         GameObject fishObject = Instantiate(fishPrefab, spawnPosition, Quaternion.identity);
         Fish fish = fishObject.GetComponent<Fish>();
         fish.Initialize(selectedFish, !spawnLeft); // 左侧生成则向右移动，反之亦然
+        //print(fish.type);
     }
 
     private Vector3 CalculateSpawnPosition(bool spawnLeft)

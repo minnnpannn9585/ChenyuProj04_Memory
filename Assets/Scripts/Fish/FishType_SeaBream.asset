@@ -15,4 +15,5 @@ MonoBehaviour:
   fishName: Sea Bream
   fishSprite: {fileID: 2747690628134850419, guid: 16037dbd798344f57a526d53d48f5ead, type: 3}
   moveSpeed: 4
+  index: 2
   scale: {x: 2, y: 2}

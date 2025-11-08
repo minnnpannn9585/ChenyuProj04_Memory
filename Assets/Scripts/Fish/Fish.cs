@@ -7,15 +7,18 @@ public class Fish : MonoBehaviour
     private FishType fishType;
     private bool movingRight;
     public SpriteRenderer spriteRenderer;
+    
+    
 
-    public void Initialize(FishType type, bool moveRight)
+    public void Initialize(FishType t, bool moveRight)
     {
-        fishType = type;
+        type = (FishTypes)t.index;
+        fishType = t;
         movingRight = moveRight;
         
         // 应用鱼的视觉属性
-        spriteRenderer.sprite = type.fishSprite;
-        transform.GetChild(0).localScale = type.scale;
+        spriteRenderer.sprite = t.fishSprite;
+        transform.GetChild(0).localScale = t.scale;
         
         // 如果向左移动，翻转精灵
         if (!movingRight)
