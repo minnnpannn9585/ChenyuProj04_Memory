@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public enum GameState { Start, Order, Fishing, Selling, Win, Lose }
     public GameState currentState;
 
-    public GameObject spawnManager;
+    //public GameObject spawnManager;
 
     // 固定3个顾客的配置列表（在Inspector手动添加3个订单）
     [Header("固定3个顾客的订单配置（必须添加3个）")]
@@ -121,32 +121,7 @@ public class GameManager : MonoBehaviour
             SwitchState(GameState.Lose); // 错误则失败
         }
     }
-
-    // 生成鱼（随机4种类型）
-    //public GameObject fishPrefab;
-    //private System.Collections.IEnumerator SpawnFishRoutine()
-    //{
-    //    while (currentState == GameState.Fishing)
-    //    {
-    //        SpawnFish();
-    //        yield return new WaitForSeconds(Random.Range(0.5f, 2f));
-    //    }
-    //}
-
-    //private void SpawnFish()
-    //{
-    //    GameObject fish = Instantiate(fishPrefab, transform);
-    //    float yPos = Random.Range(-3f, 3f); // 垂直位置范围（根据相机调整）
-    //    fish.transform.position = new Vector3(10f, yPos, 0); // 从右侧生成
-
-    //    Fish fishComp = fish.GetComponent<Fish>();
-    //    fishComp.type = (FishTypes)Random.Range(0, 4); // 随机4种鱼类型
-
-    //    Rigidbody2D rb = fish.GetComponent<Rigidbody2D>();
-    //    rb.velocity = new Vector2(-Random.Range(2f, 5f), 0); // 向左移动
-    //}
-
-    // 重新开始游戏（重置背包和状态）
+    
     public void RestartGame()
     {
         // 重置背包

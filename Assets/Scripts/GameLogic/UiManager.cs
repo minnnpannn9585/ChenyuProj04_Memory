@@ -36,6 +36,8 @@ public class UIManager : MonoBehaviour
     public Button seaBeamButton;
     public Button yellowCroakerButton;
 
+    public Button SellButton;
+
     private int currentSelectedCount = 1;
     private FishTypes currentSelectedFish; // 当前选中的鱼类型
     
@@ -57,9 +59,15 @@ public class UIManager : MonoBehaviour
         clownfishButton.onClick.AddListener(() => OnSelectFishType(FishTypes.Clownfish));
         seaBeamButton.onClick.AddListener(() => OnSelectFishType(FishTypes.SeaBeam));
         yellowCroakerButton.onClick.AddListener(() => OnSelectFishType(FishTypes.YellowCroaker));
+        SellButton.onClick.AddListener(OnSellButtonClick);
         
     }
 
+    public void OnSellButtonClick()
+    {
+        GameManager.Instance.CheckSelling(currentSelectedFish, currentSelectedCount);
+    }
+    
     // 显示开始面板（不变）
     public void ShowStartPanel()
     {
