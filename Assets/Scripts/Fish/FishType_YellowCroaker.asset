@@ -15,5 +15,5 @@ MonoBehaviour:
   fishName: Yellow Croaker
   fishSprite: {fileID: 21300000, guid: d5507d13f5a96453f8bc1d0d11b47aae, type: 3}
   moveSpeed: 3
-  index: 1
+  index: 3
   scale: {x: 2.5, y: 2.5}

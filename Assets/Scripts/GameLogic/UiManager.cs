@@ -38,9 +38,11 @@ public class UIManager : MonoBehaviour
 
     private int currentSelectedCount = 1;
     private FishTypes currentSelectedFish; // 当前选中的鱼类型
+    
+    
 
     // 结果面板元素
-    public TextMeshProUGUI resultText;
+    //public TextMeshProUGUI resultText;
     public Button restartButton;
 
     private void Awake()
@@ -55,6 +57,7 @@ public class UIManager : MonoBehaviour
         clownfishButton.onClick.AddListener(() => OnSelectFishType(FishTypes.Clownfish));
         seaBeamButton.onClick.AddListener(() => OnSelectFishType(FishTypes.SeaBeam));
         yellowCroakerButton.onClick.AddListener(() => OnSelectFishType(FishTypes.YellowCroaker));
+        
     }
 
     // 显示开始面板（不变）
@@ -102,7 +105,7 @@ public class UIManager : MonoBehaviour
     // 显示当前售卖的顾客（仅显示名称，不显示需求）
     public void ShowSellingUI(CustomerOrder order)
     {
-        currentCustomerText.text = $"current customer: {order.customerName}"; // 只显示顾客是谁
+        currentCustomerText.text = $"{order.customerName}"; // 只显示顾客是谁
         // 默认选中第一种鱼（玩家可手动切换）
         currentSelectedFish = FishTypes.Shrimp;
         UpdateSelectedFishText(); // 更新选中鱼的显示
@@ -119,7 +122,7 @@ public class UIManager : MonoBehaviour
     // 更新选中鱼类型的显示
     private void UpdateSelectedFishText()
     {
-        selectedFishText.text = $"current selected fish: {GetFishName(currentSelectedFish)}";
+        selectedFishText.text = $"{GetFishName(currentSelectedFish)}";
     }
 
     // 显示结果面板（不变）
@@ -127,7 +130,7 @@ public class UIManager : MonoBehaviour
     {
         HideAllPanels();
         resultPanel.SetActive(true);
-        resultText.text = isWin ? "win" : "lose";
+        //resultText.text = isWin ? "win" : "lose";
     }
 
     private void HideAllPanels()
@@ -169,7 +172,7 @@ public class UIManager : MonoBehaviour
 
     private void UpdateSelectedCountText()
     {
-        selectedCountText.text = $"select number: {currentSelectedCount}";
+        selectedCountText.text = $"{currentSelectedCount}";
     }
 
     // 确认售卖（不变）
