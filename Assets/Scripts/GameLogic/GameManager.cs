@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
             if (currentFishingTime <= 0)
             {
                 SwitchState(GameState.Selling);
-                UIManager.Instance.ShowSellingUI(orders[currentSellingIndex]);
+                UIManager.Instance.ShowSellingUI(configuredOrders[currentSellingIndex]);
             }
         }
     }
@@ -100,20 +100,20 @@ public class GameManager : MonoBehaviour
     // 售卖检查（验证3个顾客订单）
     public void CheckSelling(FishTypes selectedFish, int selectedCount)
     {
-        CustomerOrder currentOrder = orders[currentSellingIndex];
+        CustomerOrder currentOrder = configuredOrders[currentSellingIndex];
         if (selectedFish == currentOrder.requiredFish && selectedCount == currentOrder.requiredCount)
         {
             backpack[selectedFish] -= selectedCount;
             currentSellingIndex++;
 
             // 检查是否完成所有3个订单
-            if (currentSellingIndex >= orders.Count)
+            if (currentSellingIndex >= configuredOrders.Count)
             {
                 SwitchState(GameState.Win); // 全部完成则胜利
             }
             else
             {
-                UIManager.Instance.ShowSellingUI(orders[currentSellingIndex]);
+                UIManager.Instance.ShowSellingUI(configuredOrders[currentSellingIndex]);
             }
         }
         else

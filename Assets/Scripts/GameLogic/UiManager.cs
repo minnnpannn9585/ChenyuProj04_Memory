@@ -123,8 +123,17 @@ public class UIManager : MonoBehaviour
     // 选择鱼类型（核心新增方法）
     private void OnSelectFishType(FishTypes type)
     {
-        currentSelectedFish = type;
-        UpdateSelectedFishText(); // 反馈选中的鱼类型
+        if (type == currentSelectedFish)
+        {
+            OnIncreaseCount();
+        }
+        else
+        {
+            currentSelectedFish = type;
+            UpdateSelectedFishText(); // 反馈选中的鱼类型
+            currentSelectedCount = 1;
+            UpdateSelectedCountText();
+        }
     }
 
     // 更新选中鱼类型的显示
