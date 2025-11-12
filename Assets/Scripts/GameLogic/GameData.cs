@@ -1,5 +1,5 @@
 ﻿// 鱼的类型
-public enum FishTypes { Shrimp, Clownfish, SeaBeam, YellowCroaker }
+public enum FishTypes { Shrimp, Clownfish, SeaBream, YellowCroaker }
 
 // 顾客订单数据
 [System.Serializable]

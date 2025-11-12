@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
         // 绑定鱼种类选择按钮事件
         shrimpButton.onClick.AddListener(() => OnSelectFishType(FishTypes.Shrimp));
         clownfishButton.onClick.AddListener(() => OnSelectFishType(FishTypes.Clownfish));
-        seaBeamButton.onClick.AddListener(() => OnSelectFishType(FishTypes.SeaBeam));
+        seaBeamButton.onClick.AddListener(() => OnSelectFishType(FishTypes.SeaBream));
         yellowCroakerButton.onClick.AddListener(() => OnSelectFishType(FishTypes.YellowCroaker));
         SellButton.onClick.AddListener(OnSellButtonClick);
         
@@ -169,8 +169,8 @@ public class UIManager : MonoBehaviour
     {
         shrimpText.text = $"shrimp: {backpack[FishTypes.Shrimp]}";
         clownfishText.text = $"clownfish: {backpack[FishTypes.Clownfish]}";
-        seaBeamText.text = $"seabeam: {backpack[FishTypes.SeaBeam]}";
-        yellowCroakerText.text = $"yellowcroakker: {backpack[FishTypes.YellowCroaker]}";
+        seaBeamText.text = $"sea bream: {backpack[FishTypes.SeaBream]}";
+        yellowCroakerText.text = $"yellow croaker: {backpack[FishTypes.YellowCroaker]}";
     }
 
     // 数量调整（不变）
@@ -205,8 +205,8 @@ public class UIManager : MonoBehaviour
         {
             case FishTypes.Shrimp: return "Shrimp";
             case FishTypes.Clownfish: return "Clownfish";
-            case FishTypes.SeaBeam: return "SeaBeam";
-            case FishTypes.YellowCroaker: return "YellowCroaker";
+            case FishTypes.SeaBream: return "Sea Bream";
+            case FishTypes.YellowCroaker: return "Yellow Croaker";
             default: return "";
         }
     }

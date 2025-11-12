@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,9 +11,10 @@ public class GameManager : MonoBehaviour
     public GameState currentState;
 
     //public GameObject spawnManager;
+    public Image sellingPeopleImage;
+    public Sprite[] sellingPeopleSprites;
 
     // 固定3个顾客的配置列表（在Inspector手动添加3个订单）
-    [Header("固定3个顾客的订单配置（必须添加3个）")]
     public List<CustomerOrder> configuredOrders = new List<CustomerOrder>();
     public List<CustomerOrder> orders = new List<CustomerOrder>(); // 当前使用的订单
 
@@ -30,7 +32,7 @@ public class GameManager : MonoBehaviour
         // 初始化背包（4种鱼）
         backpack.Add(FishTypes.Shrimp, 0);
         backpack.Add(FishTypes.Clownfish, 0);
-        backpack.Add(FishTypes.SeaBeam, 0);
+        backpack.Add(FishTypes.SeaBream, 0);
         backpack.Add(FishTypes.YellowCroaker, 0);
     }
 
@@ -50,11 +52,13 @@ public class GameManager : MonoBehaviour
         if (currentState == GameState.Fishing)
         {
             currentFishingTime -= Time.deltaTime;
-            UIManager.Instance.UpdateFishingTimer(currentFishingTime / fishingTime);
+            UIManager.Instance.UpdateFishingTimer(
+                currentFishingTime / fishingTime);
             if (currentFishingTime <= 0)
             {
                 SwitchState(GameState.Selling);
-                UIManager.Instance.ShowSellingUI(configuredOrders[currentSellingIndex]);
+                UIManager.Instance.ShowSellingUI(configuredOrders[
+                    currentSellingIndex]);
             }
         }
     }
@@ -68,7 +72,6 @@ public class GameManager : MonoBehaviour
                 UIManager.Instance.ShowStartPanel();
                 break;
             case GameState.Order:
-                // 加载配置好的3个订单
                 orders = new List<CustomerOrder>(configuredOrders);
                 UIManager.Instance.ShowOrderPanel(orders);
                 break;
@@ -78,7 +81,7 @@ public class GameManager : MonoBehaviour
                 //StartCoroutine(SpawnFishRoutine());
                 break;
             case GameState.Selling:
-                currentSellingIndex = 0; // 重置售卖索引
+                currentSellingIndex = 0; 
                 UIManager.Instance.ShowSellingPanel();
                 break;
             case GameState.Win:
@@ -105,6 +108,11 @@ public class GameManager : MonoBehaviour
         {
             backpack[selectedFish] -= selectedCount;
             currentSellingIndex++;
+            if (currentSellingIndex < 3)
+            {
+                sellingPeopleImage.sprite = sellingPeopleSprites[currentSellingIndex];
+            }
+            
 
             // 检查是否完成所有3个订单
             if (currentSellingIndex >= configuredOrders.Count)
@@ -127,7 +135,7 @@ public class GameManager : MonoBehaviour
         // 重置背包
         backpack[FishTypes.Shrimp] = 0;
         backpack[FishTypes.Clownfish] = 0;
-        backpack[FishTypes.SeaBeam] = 0;
+        backpack[FishTypes.SeaBream] = 0;
         backpack[FishTypes.YellowCroaker] = 0;
         // 重新进入订单阶段
         SwitchState(GameState.Order);
